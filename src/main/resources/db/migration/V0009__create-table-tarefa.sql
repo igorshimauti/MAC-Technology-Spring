@@ -1,5 +1,5 @@
 CREATE TABLE tarefa (
-	id BIGINT auto_increment NOT NULL,
+	id serial NOT NULL,
 	tipo_tarefa_id BIGINT NOT NULL,
 	materia_id BIGINT NOT NULL,
 	descricao varchar(200) NOT NULL,

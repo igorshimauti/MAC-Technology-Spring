@@ -1,5 +1,5 @@
 CREATE TABLE materia (
-	id BIGINT auto_increment NOT NULL,
+	id serial NOT NULL,
 	curso_id BIGINT NOT NULL,
 	professor_id BIGINT NOT NULL,
 	nome varchar(50) NOT NULL,

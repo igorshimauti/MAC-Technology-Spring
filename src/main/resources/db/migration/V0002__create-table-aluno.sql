@@ -1,5 +1,5 @@
 CREATE TABLE aluno (
-	id BIGINT auto_increment NOT NULL,
+	id serial NOT NULL,
 	nome varchar(150) NOT NULL,
 	cpf varchar(14) NOT NULL,
 	data_nascimento DATE NOT NULL,
@@ -12,5 +12,5 @@ CREATE TABLE aluno (
 	logradouro varchar(100),
 	numero varchar(20),
 	complemento varchar(50),
-	CONSTRAINT pk_professor PRIMARY KEY (id)
+	CONSTRAINT pk_aluno PRIMARY KEY (id)
 );

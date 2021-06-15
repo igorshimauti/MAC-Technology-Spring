@@ -1,5 +1,5 @@
 CREATE TABLE aula (
-	id BIGINT auto_increment NOT NULL,
+	id serial NOT NULL,
 	materia_id BIGINT NOT NULL,
 	tema varchar(100) NOT NULL,
 	data DATE NOT NULL,

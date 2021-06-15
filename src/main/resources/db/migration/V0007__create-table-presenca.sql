@@ -1,5 +1,5 @@
 CREATE TABLE presenca (
-	id BIGINT auto_increment NOT NULL,
+	id serial NOT NULL,
 	aula_id BIGINT NOT NULL,
 	aluno_id BIGINT NOT NULL,
 	CONSTRAINT pk_presenca PRIMARY KEY (id)

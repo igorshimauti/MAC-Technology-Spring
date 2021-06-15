@@ -8,6 +8,8 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class InputTarefaAluno {
 
 	@Valid
@@ -15,7 +17,8 @@ public class InputTarefaAluno {
 	private Long alunoId;
 	
 	@Valid
-	@NotNull	
+	@NotNull
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private LocalDate dataEntrega;
 	
 	@Valid
