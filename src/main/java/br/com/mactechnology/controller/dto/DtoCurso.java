@@ -3,7 +3,7 @@ package br.com.mactechnology.controller.dto;
 public class DtoCurso {
 
 	private Long id;
-	private String nomeCurso;
+	private String nome;
 
 	public Long getId() {
 		return id;
@@ -13,11 +13,11 @@ public class DtoCurso {
 		this.id = id;
 	}
 	
-	public String getNomeCurso() {
-		return nomeCurso;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeCurso(String nomeCurso) {
-		this.nomeCurso = nomeCurso;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 }
