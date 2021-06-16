@@ -1,7 +1,6 @@
 package br.com.mactechnology.controller.dto;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -12,6 +11,8 @@ public class DtoAluno {
 	private Long id;
 	private String nome;
 	private String cpf;
+	private String email;
+	private String celular;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private LocalDate dataNascimento;
@@ -42,6 +43,22 @@ public class DtoAluno {
 		this.cpf = cpf;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public String getCelular() {
+		return celular;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
+	
 	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
