@@ -9,16 +9,23 @@ import br.com.mactechnology.controller.dto.input.InputEnderecoResidencial;
 
 public class DtoAluno {
 
-
+	private Long id;
 	private String nome;
 	private String cpf;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private LocalDate dataNascimento;
 	
-	private List<DtoCurso> cursos;
 	private InputEnderecoResidencial enderecoResidencial;
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
@@ -41,14 +48,6 @@ public class DtoAluno {
 
 	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
-	}
-	
-	public List<DtoCurso> getCursos() {
-		return cursos;
-	}
-
-	public void setCursos(List<DtoCurso> cursos) {
-		this.cursos = cursos;
 	}
 
 	public InputEnderecoResidencial getEnderecoResidencial() {
