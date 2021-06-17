@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class DtoProfessor {
 
+	private Long id;
 	private String nome;
 	private String cpf;
 	
@@ -16,6 +17,14 @@ public class DtoProfessor {
 	private String celular;
 	private DtoEnderecoResidencial enderecoResidencial;
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
