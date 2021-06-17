@@ -50,4 +50,10 @@ public class AlunoService {
 	public Aluno buscarCpf(String cpf) {
 		return alunoRepository.findByCpf(cpf).orElseThrow(() -> new BusinessRulesException("Aluno não encontrado."));
 	}
+	
+	@SuppressWarnings("null")
+	@Transactional(readOnly = true)
+	public List<Curso> listarMatriculas(Long alunoId) {
+		return cursoService.findByAlunosId(alunoId);
+	}
 }

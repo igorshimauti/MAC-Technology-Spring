@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.mactechnology.controller.dto.DtoAluno;
+import br.com.mactechnology.controller.dto.DtoCurso;
 import br.com.mactechnology.controller.dto.input.InputAluno;
 import br.com.mactechnology.controller.mapper.AlunoMapper;
+import br.com.mactechnology.controller.mapper.CursoMapper;
 import br.com.mactechnology.model.Aluno;
 import br.com.mactechnology.repository.AlunoRepository;
 import br.com.mactechnology.service.AlunoService;
@@ -40,6 +42,9 @@ public class AlunoController {
 	@Autowired
 	private AlunoMapper alunoMapper;
 	
+	@Autowired
+	private CursoMapper cursoMapper;
+	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<DtoAluno>> listar() {
 		return ResponseEntity.ok(alunoMapper.toCollectionDto(alunoRepository.findAll()));
@@ -50,6 +55,11 @@ public class AlunoController {
 		return alunoRepository.findById(alunoId)
 				.map(aluno -> ResponseEntity.ok(alunoMapper.toDto(aluno)))
 				.orElse(ResponseEntity.notFound().build());
+	}
+	
+	@GetMapping(value = "/{alunoId}/matricula", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<DtoCurso>> listarMatriculas(@PathVariable Long alunoId) {
+		return ResponseEntity.ok(cursoMapper.toCollectionDto(alunoService.listarMatriculas(alunoId)));
 	}
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

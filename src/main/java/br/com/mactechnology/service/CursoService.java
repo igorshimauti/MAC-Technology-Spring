@@ -1,5 +1,7 @@
 package br.com.mactechnology.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,5 +35,9 @@ public class CursoService {
 	@Transactional(readOnly = true)
 	public Curso buscar(Long cursoId) {
 		return cursoRepository.findById(cursoId).orElseThrow(() -> new BusinessRulesException("Curso não encontrado."));
+	}
+
+	public List<Curso> findByAlunosId(Long alunoId) {
+		return cursoRepository.findByAlunosId(alunoId);
 	}
 }
