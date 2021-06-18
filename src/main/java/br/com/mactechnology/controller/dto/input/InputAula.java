@@ -9,9 +9,6 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class InputAula {
-
-	@NotNull
-	private Long materiaId;
 	
 	@NotBlank
 	private String tema;
@@ -22,14 +19,6 @@ public class InputAula {
 	
 	@NotNull
 	private List<Long> alunos;
-
-	public Long getMateriaId() {
-		return materiaId;
-	}
-
-	public void setMateriaId(Long materiaId) {
-		this.materiaId = materiaId;
-	}
 
 	public String getTema() {
 		return tema;

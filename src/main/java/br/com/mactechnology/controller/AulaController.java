@@ -40,8 +40,8 @@ public class AulaController {
 	private AulaMapper aulaMapper;
 	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<DtoAula>> listar(@PathVariable Long cursoId) {
-		return ResponseEntity.ok(aulaMapper.toCollectionDto(aulaService.listar(cursoId)));
+	public ResponseEntity<List<DtoAula>> listar(@PathVariable Long materiaId) {
+		return ResponseEntity.ok(aulaMapper.toCollectionDto(aulaService.listar(materiaId)));
 	}
 	
 	@GetMapping(value = "/{aulaId}", produces = MediaType.APPLICATION_JSON_VALUE)

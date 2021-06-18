@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.mactechnology.model.Aluno;
 import br.com.mactechnology.model.Aula;
-import br.com.mactechnology.model.Curso;
 import br.com.mactechnology.model.Materia;
 import br.com.mactechnology.repository.AulaRepository;
 import br.com.mactechnology.service.exception.BusinessRulesException;
@@ -24,10 +23,7 @@ public class AulaService {
 	
 	@Autowired
 	private AlunoService alunoService;
-	
-	@Autowired
-	private CursoService cursoService;
-	
+		
 	@Transactional
 	public Aula salvar(Long materiaId, List<Long> alunos, Aula aula) {
 		boolean aulaJaCadastrada = aulaRepository.findByTema(aula.getTema()).stream().anyMatch(aulaExistente -> !aulaExistente.equals(aula));
@@ -56,17 +52,8 @@ public class AulaService {
 		return aulaRepository.findById(aulaId).orElseThrow(() -> new BusinessRulesException("Aula não encontrada."));
 	}
 	
-	@SuppressWarnings("null")
-	public List<Aula> listar(Long cursoId) {
-		Curso curso = cursoService.buscar(cursoId);
-		List<Aula> aulas = null;
-		
-		for (Materia materia : curso.getMaterias()) {
-			for (Aula aula : materia.getAulas()) {
-				aulas.add(aula);
-			}
-		}
-		
-		return aulas;
+	@Transactional(readOnly = true)
+	public List<Aula> listar(Long materiaId) {
+		return aulaRepository.findByMateriaId(materiaId);
 	}
 }

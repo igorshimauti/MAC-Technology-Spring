@@ -6,18 +6,18 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class DtoAula {
 
-	private Long materiaId;
+	private Long id;
 	private String tema;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private LocalDate data;
 
-	public Long getMateriaId() {
-		return materiaId;
+	public Long getId() {
+		return id;
 	}
-
-	public void setMateriaId(Long materiaId) {
-		this.materiaId = materiaId;
+	
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getTema() {

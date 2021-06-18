@@ -11,4 +11,5 @@ import br.com.mactechnology.model.Aula;
 public interface AulaRepository extends JpaRepository<Aula, Long> {
 
 	List<Aula> findByTema(String tema);
+	List<Aula> findByMateriaId(Long materiaId);
 }
