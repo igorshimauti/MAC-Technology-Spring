@@ -4,7 +4,7 @@ public class DtoMateria {
 
 	private Long id;
 	private String nome;
-	private DtoProfessor professor;
+	private Long professorId;
 
 	public Long getId() {
 		return id;
@@ -18,15 +18,15 @@ public class DtoMateria {
 		return nome;
 	}
 	
+	public Long getProfessorId() {
+		return professorId;
+	}
+	
+	public void setProfessorId(Long professorId) {
+		this.professorId = professorId;
+	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	
-	public DtoProfessor getProfessor() {
-		return professor;
-	}
-	
-	public void setProfessor(DtoProfessor professor) {
-		this.professor = professor;
 	}
 }
