@@ -12,5 +12,5 @@ public interface CursoRepository extends JpaRepository<Curso, Long>{
 
 	List<Curso> findByNome(String nome);
 	List<Curso> findByNomeContaining(String nome);
-	List<Curso> findByAlunosId(Long id);
+	List<Curso> findByAlunosId(Long alunoId);
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.mactechnology.model.Aluno;
 import br.com.mactechnology.model.Curso;
 import br.com.mactechnology.repository.CursoRepository;
 import br.com.mactechnology.service.exception.BusinessRulesException;
@@ -15,6 +16,9 @@ public class CursoService {
 
 	@Autowired
 	private CursoRepository cursoRepository;
+	
+	@Autowired
+	private AlunoService alunoService;
 	
 	@Transactional
 	public Curso salvar(Curso curso) {
@@ -37,7 +41,13 @@ public class CursoService {
 		return cursoRepository.findById(cursoId).orElseThrow(() -> new BusinessRulesException("Curso não encontrado."));
 	}
 
+	@Transactional(readOnly = true)
 	public List<Curso> findByAlunosId(Long alunoId) {
 		return cursoRepository.findByAlunosId(alunoId);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Aluno> findByCursosId(Long cursoId) {
+		return alunoService.findByCursosId(cursoId);
 	}
 }

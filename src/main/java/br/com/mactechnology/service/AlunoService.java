@@ -51,9 +51,13 @@ public class AlunoService {
 		return alunoRepository.findByCpf(cpf).orElseThrow(() -> new BusinessRulesException("Aluno não encontrado."));
 	}
 	
-	@SuppressWarnings("null")
 	@Transactional(readOnly = true)
 	public List<Curso> listarMatriculas(Long alunoId) {
 		return cursoService.findByAlunosId(alunoId);
 	}
+	
+	@Transactional(readOnly = true)
+	public List<Aluno> findByCursosId(Long cursoId) {
+		return alunoRepository.findByCursosId(cursoId);
+	};
 }
