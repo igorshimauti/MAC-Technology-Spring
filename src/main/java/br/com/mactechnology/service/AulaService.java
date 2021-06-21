@@ -56,4 +56,9 @@ public class AulaService {
 	public List<Aula> listar(Long materiaId) {
 		return aulaRepository.findByMateriaId(materiaId);
 	}
+	
+	@Transactional(readOnly = true)
+	public List<Aluno> findByAulasId(Long aulaId) {
+		return alunoService.findByAulasId(aulaId);
+	}
 }

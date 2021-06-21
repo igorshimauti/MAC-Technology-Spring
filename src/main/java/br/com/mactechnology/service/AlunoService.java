@@ -60,4 +60,9 @@ public class AlunoService {
 	public List<Aluno> findByCursosId(Long cursoId) {
 		return alunoRepository.findByCursosId(cursoId);
 	};
+	
+	@Transactional(readOnly = true)
+	public List<Aluno> findByAulasId(Long aulaId) {
+		return alunoRepository.findByAulasId(aulaId);
+	};
 }

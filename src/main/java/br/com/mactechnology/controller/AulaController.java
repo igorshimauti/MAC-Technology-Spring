@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.mactechnology.controller.dto.DtoAluno;
 import br.com.mactechnology.controller.dto.DtoAula;
 import br.com.mactechnology.controller.dto.input.InputAula;
+import br.com.mactechnology.controller.mapper.AlunoMapper;
 import br.com.mactechnology.controller.mapper.AulaMapper;
 import br.com.mactechnology.model.Aula;
 import br.com.mactechnology.repository.AulaRepository;
@@ -39,6 +41,9 @@ public class AulaController {
 	@Autowired
 	private AulaMapper aulaMapper;
 	
+	@Autowired
+	private AlunoMapper alunoMapper;
+	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<DtoAula>> listar(@PathVariable Long materiaId) {
 		return ResponseEntity.ok(aulaMapper.toCollectionDto(aulaService.listar(materiaId)));
@@ -49,6 +54,11 @@ public class AulaController {
 		return aulaRepository.findById(aulaId)
 				.map(aula -> ResponseEntity.ok(aulaMapper.toDto(aula)))
 				.orElse(ResponseEntity.notFound().build());
+	}
+	
+	@GetMapping(value = "/{aulaId}/alunos", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<DtoAluno>> listarAlunosPresentes(@PathVariable Long aulaId) {
+		return ResponseEntity.ok(alunoMapper.toCollectionDto(aulaService.findByAulasId(aulaId)));
 	}
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
