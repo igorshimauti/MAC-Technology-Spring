@@ -14,7 +14,7 @@ public class InputAula {
 	private String tema;
 	
 	@NotNull
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private LocalDate data;
 	
 	@NotNull

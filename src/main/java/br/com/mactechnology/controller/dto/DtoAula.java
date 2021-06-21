@@ -9,7 +9,7 @@ public class DtoAula {
 	private Long id;
 	private String tema;
 	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private LocalDate data;
 
 	public Long getId() {
