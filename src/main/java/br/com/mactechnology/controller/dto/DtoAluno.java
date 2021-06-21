@@ -14,7 +14,7 @@ public class DtoAluno {
 	private String email;
 	private String celular;
 	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private LocalDate dataNascimento;
 	
 	private InputEnderecoResidencial enderecoResidencial;
