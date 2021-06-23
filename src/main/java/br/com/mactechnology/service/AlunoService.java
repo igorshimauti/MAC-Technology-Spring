@@ -22,9 +22,9 @@ public class AlunoService {
 	
 	@Transactional
 	public Aluno salvar(List<Long> cursos, Aluno aluno) {
-		boolean alunoJaCadastrado = alunoRepository.findByNome(aluno.getCpf()).stream().anyMatch(alunoExistente -> !alunoExistente.equals(aluno));
+		Aluno alunoJaCadastrado = alunoRepository.findByCpf(aluno.getCpf()).orElse(aluno);
 		
-		if (alunoJaCadastrado) {
+		if (alunoJaCadastrado.getId() != aluno.getId()) {
 			throw new BusinessRulesException("Aluno com o CPF '" + aluno.getCpf() + "' já foi cadastrado anteriormente.");
 		}
 		

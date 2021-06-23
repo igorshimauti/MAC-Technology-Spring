@@ -19,9 +19,9 @@ public class UsuarioService implements UserDetailsService {
 
 	@Transactional
 	public Usuario salvar(Usuario usuario) {
-		boolean usuarioJaCadastrado = usuarioRepository.findByEmail(usuario.getEmail()).stream().anyMatch(usuarioExistente -> !usuarioExistente .equals(usuario));
+		Usuario usuarioJaCadastrado = usuarioRepository.findByEmail(usuario.getEmail()).orElse(usuario);
 
-		if (usuarioJaCadastrado) {
+		if (usuarioJaCadastrado.getId() != usuario.getId()) {
 			throw new BusinessRulesException("Usuário com o login '" + usuario.getEmail() + "' já foi cadastrado anteriormente.");
 		}
 		
