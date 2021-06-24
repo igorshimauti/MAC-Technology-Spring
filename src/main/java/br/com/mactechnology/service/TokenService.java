@@ -26,7 +26,7 @@ public class TokenService {
 		Date dataExpiracao = new Date(dataCriacao.getTime() + Long.parseLong(expiracao));
 		Usuario logado = (Usuario) auth.getPrincipal();
 
-		return Jwts.builder().setIssuer("bank line").setSubject(logado.getId().toString()).setIssuedAt(dataCriacao)
+		return Jwts.builder().setIssuer("mac-courses").setSubject(logado.getId().toString()).setIssuedAt(dataCriacao)
 				.setExpiration(dataExpiracao).signWith(SignatureAlgorithm.HS256, secret).compact();
 	}
 
