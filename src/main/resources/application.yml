@@ -21,5 +21,5 @@ application:
 
 maccourses:
   jwt:
-    expiracao: 86400
+    expiracao: 43200
     secret: "DE2EDBCE3E86603316B9C03AB2ABAECE1AA3551CD76338732E8371EE5D1355D3"
