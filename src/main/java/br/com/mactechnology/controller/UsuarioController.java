@@ -33,7 +33,7 @@ import br.com.mactechnology.repository.UsuarioRepository;
 import br.com.mactechnology.service.TokenService;
 import br.com.mactechnology.service.UsuarioService;
 
-@CrossOrigin(origins = "https://mac-courses.netlify.app", maxAge = 86400)
+@CrossOrigin(origins = "https://mac-courses.netlify.app", maxAge = 7200)
 @RestController
 @RequestMapping(value = "/usuario")
 public class UsuarioController {
@@ -95,6 +95,13 @@ public class UsuarioController {
 	
 	@PostMapping("/logar")
 	public ResponseEntity<DtoToken> logar(@RequestBody InputLogin input) {
+		Usuario usuario = usuarioRepository.findByEmail(input.getEmail()).orElse(null);
+		
+		if (usuario == null) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		
 		try {
 			UsernamePasswordAuthenticationToken dadosLogin = input.converte();
 			Authentication authentication = authenticationManager.authenticate(dadosLogin);
