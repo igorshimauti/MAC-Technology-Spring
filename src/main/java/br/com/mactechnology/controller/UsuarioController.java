@@ -101,9 +101,9 @@ public class UsuarioController {
 			return ResponseEntity.notFound().build();
 		}
 		
-		if (!usuario.getAutorizado()) {
+		/*if (!usuario.getAutorizado()) {
 			return ResponseEntity.noContent().build();
-		}
+		}*/
 		
 		try {
 			UsernamePasswordAuthenticationToken dadosLogin = input.converte();
