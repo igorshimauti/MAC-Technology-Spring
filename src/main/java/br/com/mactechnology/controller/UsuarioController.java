@@ -73,14 +73,15 @@ public class UsuarioController {
 		return ResponseEntity.ok(usuarioMapper.toDto(usuario));
 	}
 	
-	@PutMapping(value = "/{usuarioId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<DtoUsuario> atualizar(@PathVariable Long usuarioId, @Valid @RequestBody InputUsuario input) {
-		if (!usuarioRepository.existsById(usuarioId)) {
+	@PostMapping(value = "/{usuarioId}/autorizar", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<DtoUsuario> atualizar(@PathVariable Long usuarioId) {
+		Usuario usuario = usuarioRepository.findById(usuarioId).orElse(null);
+		
+		if (usuario == null) {
 			return ResponseEntity.notFound().build();
 		}
 		
-		Usuario usuario = usuarioMapper.toEntity(input);
-		usuario.setId(usuarioId);
+		usuario.setAutorizado(true);
 		return ResponseEntity.ok(usuarioMapper.toDto(usuarioService.salvar(usuario)));
 	}
 	
