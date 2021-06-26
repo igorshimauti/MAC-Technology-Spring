@@ -33,7 +33,8 @@ import br.com.mactechnology.repository.UsuarioRepository;
 import br.com.mactechnology.service.TokenService;
 import br.com.mactechnology.service.UsuarioService;
 
-@CrossOrigin(origins = "https://mac-courses.netlify.app", maxAge = 43200)
+@CrossOrigin(origins = "https://mac-courses.netlify.app", maxAge = 7200)
+//@CrossOrigin(origins = "http://localhost:4200", maxAge = 7200)
 @RestController
 @RequestMapping(value = "/usuario")
 public class UsuarioController {
