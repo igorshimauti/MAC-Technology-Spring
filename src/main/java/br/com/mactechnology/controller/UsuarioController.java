@@ -58,6 +58,16 @@ public class UsuarioController {
 		return ResponseEntity.ok(usuarioMapper.toCollectionDto(usuarioRepository.findAll()));
 	}
 	
+	@GetMapping(value = "/bloqueados", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<DtoUsuario>> listarBloqueados() {
+		return ResponseEntity.ok(usuarioMapper.toCollectionDto(usuarioRepository.findByAutorizado(false)));
+	}
+
+	@GetMapping(value = "/autorizados", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<DtoUsuario>> listarAutorizados() {
+		return ResponseEntity.ok(usuarioMapper.toCollectionDto(usuarioRepository.findByAutorizado(true)));
+	}
+	
 	@GetMapping(value = "/{usuarioId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<DtoUsuario> buscar(@PathVariable Long usuarioId) {
 		return usuarioRepository.findById(usuarioId)
