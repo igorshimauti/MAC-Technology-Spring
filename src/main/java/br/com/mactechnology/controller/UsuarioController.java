@@ -1,5 +1,7 @@
 package br.com.mactechnology.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -77,7 +79,10 @@ public class UsuarioController {
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<DtoUsuario> incluir(@Valid @RequestBody InputUsuario input) {
+	public ResponseEntity<DtoUsuario> incluir(@Valid @RequestBody InputUsuario input) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+		String hash = usuarioService.encriptarSenha(input.getSenha());
+		input.setSenha(hash);
+		
 		Usuario usuario = usuarioService.salvar(usuarioMapper.toEntity(input));
 		return ResponseEntity.ok(usuarioMapper.toDto(usuario));
 	}
@@ -117,7 +122,7 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/logar")
-	public ResponseEntity<DtoToken> logar(@RequestBody InputLogin input) {
+	public ResponseEntity<DtoToken> logar(@RequestBody InputLogin input) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		Usuario usuario = usuarioRepository.findByEmail(input.getEmail()).orElse(null);
 		
 		if (usuario == null) {
@@ -127,6 +132,9 @@ public class UsuarioController {
 		/*if (!usuario.getAutorizado()) {
 			return ResponseEntity.noContent().build();
 		}*/
+		
+		String hash = usuarioService.encriptarSenha(input.getSenha());
+		input.setSenha(hash);
 		
 		try {
 			UsernamePasswordAuthenticationToken dadosLogin = input.converte();
