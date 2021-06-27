@@ -129,9 +129,9 @@ public class UsuarioController {
 			return ResponseEntity.notFound().build();
 		}
 		
-		/*if (!usuario.getAutorizado()) {
+		if (!usuario.getAutorizado()) {
 			return ResponseEntity.noContent().build();
-		}*/
+		}
 		
 		String hash = usuarioService.encriptarSenha(input.getSenha());
 		input.setSenha(hash);
