@@ -83,7 +83,7 @@ public class UsuarioController {
 	}
 	
 	@PostMapping(value = "/{usuarioId}/autorizar", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<DtoUsuario> atualizar(@PathVariable Long usuarioId) {
+	public ResponseEntity<DtoUsuario> autorizar(@PathVariable Long usuarioId) {
 		Usuario usuario = usuarioRepository.findById(usuarioId).orElse(null);
 		
 		if (usuario == null) {
@@ -91,6 +91,18 @@ public class UsuarioController {
 		}
 		
 		usuario.setAutorizado(true);
+		return ResponseEntity.ok(usuarioMapper.toDto(usuarioService.salvar(usuario)));
+	}
+
+	@PostMapping(value = "/{usuarioId}/setAdmin", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<DtoUsuario> setAdmin(@PathVariable Long usuarioId) {
+		Usuario usuario = usuarioRepository.findById(usuarioId).orElse(null);
+		
+		if (usuario == null) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		usuario.setAdmin(true);
 		return ResponseEntity.ok(usuarioMapper.toDto(usuarioService.salvar(usuario)));
 	}
 	

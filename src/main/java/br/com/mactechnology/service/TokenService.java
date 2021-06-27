@@ -26,8 +26,14 @@ public class TokenService {
 		Date dataExpiracao = new Date(dataCriacao.getTime() + Long.parseLong(expiracao));
 		Usuario logado = (Usuario) auth.getPrincipal();
 
-		return Jwts.builder().setIssuer("mac-courses").setSubject(logado.getId().toString()).setIssuedAt(dataCriacao)
-				.setExpiration(dataExpiracao).signWith(SignatureAlgorithm.HS256, secret).compact();
+		return Jwts.builder().setIssuer("mac-courses")
+				.setId(logado.getId().toString())
+				.setSubject(logado.getNome())
+				.setIssuer(logado.getAdmin().toString())
+				.setIssuedAt(dataCriacao)
+				.setExpiration(dataExpiracao)
+				.signWith(SignatureAlgorithm.HS256, secret)
+				.compact();
 	}
 
 	public boolean isTokenValid(String token) {
@@ -41,7 +47,7 @@ public class TokenService {
 
 	public Long getUsuarioId(String token) {
 		Claims claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
-		Long usuarioId = Long.parseLong(claims.getSubject());
+		Long usuarioId = Long.parseLong(claims.getId());
 		return usuarioId;
 	}
 }

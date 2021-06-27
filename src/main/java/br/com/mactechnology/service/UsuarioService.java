@@ -27,6 +27,7 @@ public class UsuarioService implements UserDetailsService {
 		
 		if (usuario.getId() == null) {
 			usuario.setAutorizado(false);
+			usuario.setAdmin(false);
 		}
 
 		return usuarioRepository.save(usuario);

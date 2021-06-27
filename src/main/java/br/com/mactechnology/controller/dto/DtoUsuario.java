@@ -7,6 +7,7 @@ public class DtoUsuario {
 	private String cpf;
 	private String email;
 	private Boolean autorizado;
+	private Boolean admin;
 	
 	public Long getId() {
 		return id;
@@ -46,5 +47,13 @@ public class DtoUsuario {
 	
 	public void setAutorizado(Boolean autorizado) {
 		this.autorizado = autorizado;
+	}
+	
+	public Boolean getAdmin() {
+		return admin;
+	}
+	
+	public void setAdmin(Boolean admin) {
+		this.admin = admin;
 	}
 }

@@ -47,6 +47,10 @@ public class Usuario implements UserDetails {
 	@Column()
 	@NotNull
 	private Boolean autorizado;
+
+	@Column()
+	@NotNull
+	private Boolean admin;
 	
 	public Long getId() {
 		return id;
@@ -96,6 +100,14 @@ public class Usuario implements UserDetails {
 		this.autorizado = autorizado;
 	}
 
+	public Boolean getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Boolean admin) {
+		this.admin = admin;
+	}
+	
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
