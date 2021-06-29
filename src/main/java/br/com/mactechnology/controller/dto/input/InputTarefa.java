@@ -20,12 +20,12 @@ public class InputTarefa {
 
 	@Valid
 	@NotNull
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private LocalDate data;
 	
 	@Valid
 	@NotNull
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private LocalDate dataEntrega;
 
 	public Long getTipoTarefaId() {

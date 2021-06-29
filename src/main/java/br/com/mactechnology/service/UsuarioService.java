@@ -22,18 +22,21 @@ public class UsuarioService implements UserDetailsService {
 	private UsuarioRepository usuarioRepository;
 
 	@Transactional
-	public Usuario salvar(Usuario usuario) {
-		Usuario usuarioJaCadastrado = usuarioRepository.findByEmail(usuario.getEmail()).orElse(usuario);
+	public Usuario salvar(Usuario usuario) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+		boolean usuarioJaCadastrado = (usuarioRepository.existsByEmail(usuario.getEmail()) && usuario.getId() == null);
 
-		if (usuarioJaCadastrado.getId() != usuario.getId()) {
+		if (usuarioJaCadastrado) {
 			throw new BusinessRulesException("Usuário com o login '" + usuario.getEmail() + "' já foi cadastrado anteriormente.");
 		}
 		
 		if (usuario.getId() == null) {
 			usuario.setAutorizado(false);
 			usuario.setAdmin(false);
+			
+			String hash = encriptarSenha(usuario.getSenha());
+			usuario.setSenha(hash);
 		}
-
+		
 		return usuarioRepository.save(usuario);
 	}
 

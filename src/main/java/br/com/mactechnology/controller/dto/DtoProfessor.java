@@ -10,7 +10,7 @@ public class DtoProfessor {
 	private String nome;
 	private String cpf;
 	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private LocalDate dataNascimento;
 	
 	private String email;

@@ -30,7 +30,8 @@ import br.com.mactechnology.service.CursoService;
 import br.com.mactechnology.service.MateriaService;
 import br.com.mactechnology.service.ProfessorService;
 
-@CrossOrigin
+@CrossOrigin(origins = "https://mac-courses.netlify.app", maxAge = 7200)
+//@CrossOrigin(origins = "http://localhost:4200", maxAge = 7200)
 @RestController
 @RequestMapping(value = "/curso/{cursoId}/materia")
 public class MateriaController {
@@ -69,6 +70,7 @@ public class MateriaController {
 		Materia materia = materiaMapper.toEntity(input);
 		Professor professor = professorService.buscar(input.getProfessorId());
 		
+		materia.setId(null);
 		materia.setProfessor(professor);
 		
 		return ResponseEntity.ok(materiaMapper.toDto(materiaService.salvar(cursoId, materia)));

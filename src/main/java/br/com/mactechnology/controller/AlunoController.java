@@ -28,7 +28,8 @@ import br.com.mactechnology.model.Aluno;
 import br.com.mactechnology.repository.AlunoRepository;
 import br.com.mactechnology.service.AlunoService;
 
-@CrossOrigin
+@CrossOrigin(origins = "https://mac-courses.netlify.app", maxAge = 7200)
+//@CrossOrigin(origins = "http://localhost:4200", maxAge = 7200)
 @RestController
 @RequestMapping(value = "/aluno")
 public class AlunoController {

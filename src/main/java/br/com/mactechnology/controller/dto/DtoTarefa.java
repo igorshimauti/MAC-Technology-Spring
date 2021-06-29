@@ -6,11 +6,31 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class DtoTarefa {
 
+	private Long id;
+	private Long tipoTarefaId;
 	private String descricao;
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private LocalDate data;
 	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private LocalDate dataEntrega;
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public Long getTipoTarefaId() {
+		return tipoTarefaId;
+	}
+
+	public void setTipoTarefaId(Long tipoTarefaId) {
+		this.tipoTarefaId = tipoTarefaId;
+	}
 	
 	public String getDescricao() {
 		return descricao;

@@ -7,6 +7,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import br.com.mactechnology.model.Usuario;
+import br.com.mactechnology.service.exception.BusinessRulesException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -25,6 +26,10 @@ public class TokenService {
 		Date dataCriacao = new Date();
 		Date dataExpiracao = new Date(dataCriacao.getTime() + Long.parseLong(expiracao));
 		Usuario logado = (Usuario) auth.getPrincipal();
+		
+		if (!logado.getAutorizado()) {
+			throw new BusinessRulesException("Usuário não autorizado. Contacte um administrador.");
+		}
 
 		return Jwts.builder().setIssuer("mac-courses")
 				.setId(logado.getId().toString())

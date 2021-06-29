@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,7 +28,8 @@ import br.com.mactechnology.model.Aula;
 import br.com.mactechnology.repository.AulaRepository;
 import br.com.mactechnology.service.AulaService;
 
-@CrossOrigin
+@CrossOrigin(origins = "https://mac-courses.netlify.app", maxAge = 7200)
+//@CrossOrigin(origins = "http://localhost:4200", maxAge = 7200)
 @RestController
 @RequestMapping(value = "/curso/{cursoId}/materia/{materiaId}/aula")
 public class AulaController {
@@ -77,5 +79,15 @@ public class AulaController {
 		Aula aula = aulaService.buscar(aulaId);
 		aula.setId(aulaId);
 		return ResponseEntity.ok(aulaMapper.toDto(aulaService.salvar(materiaId, input.getAlunos(), aula)));
+	}
+	
+	@DeleteMapping(value = "/{aulaId}")
+	public ResponseEntity<Void> excluir(@PathVariable Long aulaId) {
+		if (!aulaRepository.existsById(aulaId)) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		aulaService.excluir(aulaId);
+		return ResponseEntity.noContent().build();
 	}
 }

@@ -26,7 +26,8 @@ import br.com.mactechnology.model.Professor;
 import br.com.mactechnology.repository.ProfessorRepository;
 import br.com.mactechnology.service.ProfessorService;
 
-@CrossOrigin
+@CrossOrigin(origins = "https://mac-courses.netlify.app", maxAge = 7200)
+//@CrossOrigin(origins = "http://localhost:4200", maxAge = 7200)
 @RestController
 @RequestMapping(value = "/professor")
 public class ProfessorController {
