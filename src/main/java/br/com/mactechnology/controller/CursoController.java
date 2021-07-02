@@ -28,7 +28,7 @@ import br.com.mactechnology.model.Curso;
 import br.com.mactechnology.repository.CursoRepository;
 import br.com.mactechnology.service.CursoService;
 
-@CrossOrigin(origins = "https://mac-courses.netlify.app", maxAge = 7200)
+@CrossOrigin(origins = "https://mac-cursos.netlify.app", maxAge = 7200)
 //@CrossOrigin(origins = "http://localhost:4200", maxAge = 7200)
 @RestController
 @RequestMapping(value = "/curso")

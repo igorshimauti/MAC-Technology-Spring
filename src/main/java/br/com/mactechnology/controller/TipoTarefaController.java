@@ -26,7 +26,7 @@ import br.com.mactechnology.model.TipoTarefa;
 import br.com.mactechnology.repository.TipoTarefaRepository;
 import br.com.mactechnology.service.TipoTarefaService;
 
-@CrossOrigin(origins = "https://mac-courses.netlify.app", maxAge = 7200)
+@CrossOrigin(origins = "https://mac-cursos.netlify.app", maxAge = 7200)
 //@CrossOrigin(origins = "http://localhost:4200", maxAge = 7200)
 @RestController
 @RequestMapping(value = "/tipo_tarefa")

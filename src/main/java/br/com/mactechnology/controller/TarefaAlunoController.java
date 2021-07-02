@@ -23,7 +23,7 @@ import br.com.mactechnology.controller.mapper.TarefaAlunoMapper;
 import br.com.mactechnology.model.TarefaAluno;
 import br.com.mactechnology.service.TarefaAlunoService;
 
-@CrossOrigin(origins = "https://mac-courses.netlify.app", maxAge = 7200)
+@CrossOrigin(origins = "https://mac-cursos.netlify.app", maxAge = 7200)
 //@CrossOrigin(origins = "http://localhost:4200", maxAge = 7200)
 @RestController
 @RequestMapping(value = "/curso/{cursoId}/materia/{materiaId}/tarefa/{tarefaId}/entrega")
