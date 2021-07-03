@@ -11,6 +11,8 @@ public class DtoAula {
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private LocalDate data;
+	
+	private String url;
 
 	public Long getId() {
 		return id;
@@ -34,5 +36,13 @@ public class DtoAula {
 
 	public void setData(LocalDate data) {
 		this.data = data;
+	}
+	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 }

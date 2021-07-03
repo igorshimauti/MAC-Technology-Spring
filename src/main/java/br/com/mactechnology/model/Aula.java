@@ -41,6 +41,9 @@ public class Aula {
 	@JoinTable(name="presenca", joinColumns = @JoinColumn(name="aula_id"), inverseJoinColumns = @JoinColumn(name="aluno_id"))
 	private List<Aluno> alunos;
 	
+	@Column
+	private String url;
+	
 	public Long getId() {
 		return id;
 	}
@@ -81,6 +84,14 @@ public class Aula {
 		this.alunos = alunos;
 	}
 
+	public String getUrl() {
+		return url;
+	}
+	
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

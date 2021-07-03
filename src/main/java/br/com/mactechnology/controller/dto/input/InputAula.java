@@ -19,6 +19,8 @@ public class InputAula {
 	
 	@NotNull
 	private List<Long> alunos;
+	
+	private String url;
 
 	public String getTema() {
 		return tema;
@@ -42,5 +44,13 @@ public class InputAula {
 
 	public void setAlunos(List<Long> alunos) {
 		this.alunos = alunos;
+	}
+	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 }
